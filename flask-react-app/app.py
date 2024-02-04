@@ -1,6 +1,6 @@
 from spotify_utils import *
 from flask import Flask
-
+from main import get_image_and_desciption 
 app = Flask(__name__)
 
 @app.route('/')
@@ -22,4 +22,5 @@ def get_playlist_image(token, playlist_href):
                 genre_map[genre] = 1
     #print sorted genre map
     print(sorted(genre_map.items(), key=lambda x: x[1], reverse=True))
-    #
+    top_5_genres = sorted(genre_map.items(), key=lambda x: x[1], reverse=True)[:5]
+
