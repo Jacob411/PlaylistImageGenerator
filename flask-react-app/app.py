@@ -1,6 +1,7 @@
 from spotify_utils import *
 from flask import Flask, request
-
+from mongo import *
+from download import download_image 
 from main import get_image_and_description 
 app = Flask(__name__)
 
@@ -40,5 +41,5 @@ def get_playlist_image():
 
     print(f"Image URL: {image_url}")
     print(f"Description: {description}")
-
+    
     return { image_url: image_url, description: description }

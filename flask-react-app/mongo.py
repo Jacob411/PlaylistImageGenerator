@@ -6,8 +6,8 @@ from dotenv import load_dotenv, find_dotenv
 from pymongo import MongoClient
 from gridfs import GridFS
 from bson.objectid import ObjectId 
-
-def write_image(image_path):
+from urllib.request import urlopen
+def write_image(image_url):
     load_dotenv(find_dotenv())
     connection_string = os.getenv("CONNECTION_STR")
 
@@ -18,10 +18,12 @@ def write_image(image_path):
     db = client['DalleImages']
 
     fs = GridFS(db)
-    # Open the image file in binary mode
-    with open(image_path, 'rb') as image_file:
-        # Store the image file in GridFS
-        file_id = fs.put(image_file, filename='my_image.jpg')
+ 
+   # Open the image file from the URL in binary mode
+    with urlopen(image_url) as response:
+        image_data = response.read()
+
+    file_id = fs.put(image_data, filename='my_image.jpg')
 
     print(f"Image stored in MongoDB with file ID: {file_id}")
 
@@ -61,8 +63,7 @@ def retrieve_image(file_id, output_path):
 
 def main():
     # Get documents from the MongoDB collection
-    retrieve_image("65bf4276cf23ddcb1e64308b", "my_image.jpg")
+    retrieve_image("65bf616887699a07da92df2a", "my_image.jpg")
     
-
 if __name__ == "__main__":
     main()
