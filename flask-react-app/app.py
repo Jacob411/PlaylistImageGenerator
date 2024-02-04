@@ -2,10 +2,13 @@ from spotify_utils import *
 import requests
 from urllib.request import urlopen
 from flask import Flask, request
+from flask_cors import CORS
 from imageAPI import upload_image 
 from download import download_image 
 from main import get_image_and_description 
 app = Flask(__name__)
+
+CORS(app)
 
 @app.route('/')
 def hello():
@@ -53,7 +56,16 @@ def get_playlist_image():
     with open(image_path, 'wb') as f:
         f.write(image_data)
 
+    text_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/textDisc.txt'
+    with open(text_path, 'wb') as f:
+        f.write(description.encode('utf-8'))
 
 
-    
-    return { image_url: image_url, description: description }
+
+    data = { image_url: image_url, description: description }
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response

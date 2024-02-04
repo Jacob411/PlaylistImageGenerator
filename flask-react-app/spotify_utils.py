@@ -29,7 +29,7 @@ class CallbackHandler(BaseHTTPRequestHandler):
 
 # Function to start the HTTP server for the callback
 def start_http_server():
-    server_address = ('localhost', 3000)
+    server_address = ('localhost', 8888)
     httpd = HTTPServer(server_address, CallbackHandler)
     httpd.handle_request()
 
@@ -39,7 +39,7 @@ def authorize_spotify():
     client_id = os.getenv('CLIENT_ID')
     # Specify the URL of the Spotify authorization page
     scopes = 'playlist-read-private%20user-read-email%20user-top-read%20user-library-read%20playlist-modify-public%20playlist-modify-private'
-    redirect_uri = 'http://localhost:3000/callback'
+    redirect_uri = 'http://localhost:8888/callback'
     spotify_auth_url = f"https://accounts.spotify.com/en/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scopes}"
 
     # Open the Spotify authorization page in the default web browser

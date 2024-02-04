@@ -39,10 +39,12 @@ def get_image_and_description(genres):
     messages=[
       {
         'role': 'user',
-        'content': f'Construct a prompt for DALL-E (AI image generator) to describe a texture for a planet based on a playlist containing artists in the following genres: {genre_prompt_insert} (fill the entire image with the texture).'
+        'content': f'Construct a prompt for DALL-E (AI image generator) to describe a texture (texture will be used in flat) based on a playlist containing artists in the following genres: {genre_prompt_insert} (fill the entire image with the texture.'
       }
     ]
   )
+
+  print(prompt_response.choices[0].message.content)
 
   # Get planet texture image
   texture_response = client.images.generate(
