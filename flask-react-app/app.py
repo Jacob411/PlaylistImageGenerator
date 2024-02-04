@@ -1,19 +1,23 @@
 from spotify_utils import *
-from flask import Flask
-from main import get_image_and_desciption
-<<<<<<< HEAD
+from flask import Flask, request
 
-=======
-from main import get_image_and_desciption 
->>>>>>> parent of 537968b (added the other functions)
+from main import get_image_and_description 
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
     return 'Hello from Flask API!'
 
-@app.route('/get_playlist_image/<token>/<playlist_href>')
-def get_playlist_image(token, playlist_href):
+# BQCeKbNc4oGiu9cdXAk_89Dbq64wWlM_N-MIAuLgWinv44i971JsnHp09DKvg8ntSQzQvxMqOtlginK4b33R4w6mqd9tpRitPL9oCBECC5cGyivSiktDCO4MA1iQ0lfo9ODDX8bqUMTbAZUu2EpqA8tobbZ6WeSDNDEeAyyj8avgnY5qk8EYw7zsmCnc11Oz4OlB8p7RsrxXNqkhf0d4GAt0gMYtoExv_GDnSx10n6e97J5HDH-7-Se3NSgCKpgaw80ps4cUQw
+# href
+# https://open.spotify.com/playlist/3cEYpjA9oz9GiPac4AsH4n
+@app.route('/get_playlist_image', methods=['POST'])
+def get_playlist_image():
+
+    json_data = request.get_json()
+    token = json_data['access_token']
+    playlist_href = json_data['playlist']
+
     print(f"Token: {token}")
     print(f"Playlist href: {playlist_href}")
     prompt_info = get_prompt_info_from_playlist(playlist_href, token)
@@ -29,7 +33,7 @@ def get_playlist_image(token, playlist_href):
     print(sorted(genre_map.items(), key=lambda x: x[1], reverse=True))
     top_5_genres = sorted(genre_map.items(), key=lambda x: x[1], reverse=True)[:5]
     print(top_5_genres) 
-    image_url, description = get_image_and_desciption(top_5_genres)
+    image_url, description = get_image_and_description(top_5_genres)
 
     print(f"Image URL: {image_url}")
     print(f"Description: {description}")
