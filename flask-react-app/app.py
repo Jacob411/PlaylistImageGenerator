@@ -1,7 +1,6 @@
 from spotify_utils import *
 from flask import Flask
-from main import get_image_and_description 
-from mongo import *
+from main import get_image_and_desciption 
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,10 +23,4 @@ def get_playlist_image(token, playlist_href):
     #print sorted genre map
     print(sorted(genre_map.items(), key=lambda x: x[1], reverse=True))
     top_5_genres = sorted(genre_map.items(), key=lambda x: x[1], reverse=True)[:5]
-    print(f'Top 5 genres: {top_5_genres}') 
 
-        
-    image_url, description = get_image_and_description(top_5_genres)
-
-    print(f"Image URL: {image_url}")
-    print(f"Description: {description}")
