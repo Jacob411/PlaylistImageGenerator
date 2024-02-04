@@ -16,7 +16,7 @@ def hello():
 # https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n
 @app.route('/get_playlist_image', methods=['POST'])
 def get_playlist_image():
-
+    print("OUT")
     json_data = request.get_json(force=True, silent=True)
     token = json_data.get('access_token')
     playlist_href = json_data.get('playlist')
@@ -49,7 +49,7 @@ def get_playlist_image():
     with urlopen(image_url) as response:
         image_data = response.read()
     # write the image data to a temporary file
-    image_path = 'temp.png'
+    image_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/temp.png'
     with open(image_path, 'wb') as f:
         f.write(image_data)
 
