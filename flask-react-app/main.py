@@ -39,7 +39,7 @@ def get_image_and_description(genres):
     messages=[
       {
         'role': 'user',
-        'content': f'Construct a prompt for DALL-E to create a texture for a planet based on a playlist containing artists in the following genres: {genre_prompt_insert} (fill the entire image with the texture).'
+        'content': f'Construct a prompt for DALL-E (AI image generator) to describe a texture for a planet based on a playlist containing artists in the following genres: {genre_prompt_insert} (fill the entire image with the texture).'
       }
     ]
   )

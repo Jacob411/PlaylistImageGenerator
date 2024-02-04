@@ -167,12 +167,16 @@ def get_endpoint(access_token, endpoint=''):
     headers = {
         'Authorization': 'Bearer {token}'.format(token=access_token)
     }
+    print(f'Getting endpoint: {endpoint}')
     try:
         response = requests.get(endpoint, headers=headers, timeout=10)
     except requests.exceptions.Timeout:
+        
         print('The request timed out')
+        return { 'error': 'timeout' }
     except requests.RequestException as e:
         print(e)
+        return { 'error': 'request exception' }
 
     return response.json()
 
