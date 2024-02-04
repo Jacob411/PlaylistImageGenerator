@@ -339,7 +339,7 @@ def get_prompt_info_from_playlist(playlist_href, access_token):
             pass        
             print('no track')
 
-
+    name = playlist['name']
     final = []
     for track in all_tracks:
         track_info = get_track(track, access_token)
@@ -349,7 +349,7 @@ def get_prompt_info_from_playlist(playlist_href, access_token):
         curr_obj['id'] = track
         curr_obj['genres'] = get_artist(track_info['artists'][0]['id'], access_token)['genres']
         final.append(curr_obj)
-    return final
+    return name, final
 
 
 def get_all_features(access_token):

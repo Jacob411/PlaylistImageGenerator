@@ -26,7 +26,7 @@ def get_playlist_image():
 
     print(f"Token: {token}")
     print(f"Playlist href: {playlist_href}")
-    prompt_info = get_prompt_info_from_playlist(playlist_href, token)
+    name, prompt_info = get_prompt_info_from_playlist(playlist_href, token)
     print(prompt_info)
     genre_map = {}
     for prompt in prompt_info:
@@ -55,7 +55,8 @@ def get_playlist_image():
     image_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/temp.png'
     with open(image_path, 'wb') as f:
         f.write(image_data)
-
+    #concatenate the description and the name 
+    description = name + "/" + description
     text_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/textDisc.txt'
     with open(text_path, 'wb') as f:
         f.write(description.encode('utf-8'))
