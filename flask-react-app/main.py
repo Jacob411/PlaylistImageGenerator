@@ -1,5 +1,6 @@
 from openai import OpenAI
-
+from dotenv import load_dotenv
+import os
 
 # TODO: get genres from Spotify API
 genres = ['trap', 'hip hop', 'house']
@@ -7,7 +8,12 @@ genres = ['trap', 'hip hop', 'house']
 new_genres = ['classic soundtrack', 'vintage italian soundtrack', 'classical', 'hollywood', 'movie tunes']
 
 def get_image_and_description(genres):
-  client = OpenAI(api_key='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')
+  
+  # Load OpenAI API key from .env file
+  load_dotenv()
+  api_key = os.getenv('OPENAI_API_KEY')
+
+  client = OpenAI(api_key=api_key)
 
   genre_length = len(genres)
   genre_prompt_insert = '' 

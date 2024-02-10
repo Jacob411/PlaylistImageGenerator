@@ -20,14 +20,22 @@ def hello():
 @app.route('/get_playlist_image', methods=['POST'])
 def get_playlist_image():
     print("OUT")
-    json_data = request.get_json(force=True, silent=True)
-    token = json_data.get('access_token')
-    playlist_href = json_data.get('playlist')
+    code = authorize_spotify()
+    token = get_access_token(code)
 
+    user_info = get_user_info(token)
+    print(user_info)
+
+    json_data = request.get_json(force=True, silent=True)
+    # token = json_data.get('access_token') # User when the token is passed in the request
+    playlist_href = json_data.get('playlist')
+    #
     print(f"Token: {token}")
     print(f"Playlist href: {playlist_href}")
+
     name, prompt_info = get_prompt_info_from_playlist(playlist_href, token)
     print(prompt_info)
+
     genre_map = {}
     for prompt in prompt_info:
         for genre in prompt['genres']:
@@ -42,22 +50,23 @@ def get_playlist_image():
     # strip out the count and leave only the genre
     top_5_genres = [genre[0] for genre in top_5_genres]
     print(top_5_genres)
+
     description, image_url = get_image_and_description(top_5_genres)
 
     print(f"Image URL: {image_url}")
     print(f"Description: {description}")
         
      
-       # Open the image file from the URL in binary mode
+    # Open the image file from the URL in binary mode
     with urlopen(image_url) as response:
         image_data = response.read()
+
     # write the image data to a temporary file
-    image_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/temp.png'
+    image_path = 'Files/image.jpg'
     with open(image_path, 'wb') as f:
         f.write(image_data)
-    #concatenate the description and the name 
-    description = name + "/" + description
-    text_path = 'C:/Users/owens/OneDrive/Desktop/SpaceHackathon/client/space-hackathon/public/textDisc.txt'
+
+    text_path = 'Files/textDisc.txt'
     with open(text_path, 'wb') as f:
         f.write(description.encode('utf-8'))
 

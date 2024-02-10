@@ -29,7 +29,7 @@ class CallbackHandler(BaseHTTPRequestHandler):
 
 # Function to start the HTTP server for the callback
 def start_http_server():
-    server_address = ('localhost', 8888)
+    server_address = ('localhost', 3000)
     httpd = HTTPServer(server_address, CallbackHandler)
     httpd.handle_request()
 
@@ -37,9 +37,10 @@ def start_http_server():
 def authorize_spotify():
     load_dotenv(find_dotenv())
     client_id = os.getenv('CLIENT_ID')
+    print(f'CLIENT_ID: {client_id}')
     # Specify the URL of the Spotify authorization page
     scopes = 'playlist-read-private%20user-read-email%20user-top-read%20user-library-read%20playlist-modify-public%20playlist-modify-private'
-    redirect_uri = 'http://localhost:8888/callback'
+    redirect_uri = 'http://localhost:3000/callback'
     spotify_auth_url = f"https://accounts.spotify.com/en/authorize?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scopes}"
 
     # Open the Spotify authorization page in the default web browser
@@ -339,7 +340,6 @@ def get_prompt_info_from_playlist(playlist_href, access_token):
             pass        
             print('no track')
 
-    name = playlist['name']
     final = []
     for track in all_tracks:
         track_info = get_track(track, access_token)
@@ -349,7 +349,7 @@ def get_prompt_info_from_playlist(playlist_href, access_token):
         curr_obj['id'] = track
         curr_obj['genres'] = get_artist(track_info['artists'][0]['id'], access_token)['genres']
         final.append(curr_obj)
-    return name, final
+    return final
 
 
 def get_all_features(access_token):
