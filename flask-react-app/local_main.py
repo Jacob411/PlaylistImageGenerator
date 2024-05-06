@@ -43,7 +43,6 @@ def get_playlist_image():
     description, image_url = get_image_and_description(top_5_genres)
 
     print(f"Image URL: {image_url}")
-    print(f"Description: {description}")
         
      
     # Open the image file from the URL in binary mode

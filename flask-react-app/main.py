@@ -33,24 +33,25 @@ def get_image_and_description(genres):
     messages=[
       {
         'role': 'user',
-        'content': f'Create a description of a playlist containing artists in the following genres: {genre_prompt_insert}. Limit the description to one paragraph.'
+        'content': f'Create a description of a playlist containing artists in the following genres: {genre_prompt_insert}.'
       }
     ]
   )
   playlist_description = description_response.choices[0].message.content
 
+  print(f'description: {playlist_description}')
   # Get DALL-E prompt to construct texture for planet based on given genres
   prompt_response = client.chat.completions.create(
     model='gpt-4',
     messages=[
       {
         'role': 'user',
-        'content': f'Construct a prompt for DALL-E (AI image generator) to describe a texture (texture will be used in flat) based on a playlist containing artists in the following genres: {genre_prompt_insert} (fill the entire image with the texture.'
+        'content': f'describe cover art based on a playlist containing artists in the following genres: {genre_prompt_insert} try to not use the genre names, but give a description of the cover art.'
       }
     ]
   )
 
-  print(prompt_response.choices[0].message.content)
+  print(f'prompt: {prompt_response.choices[0].message.content}')
 
   # Get planet texture image
   texture_response = client.images.generate(
