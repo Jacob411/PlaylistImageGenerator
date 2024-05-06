@@ -2,7 +2,7 @@ import requests
 
 
 def get_data():
-    api_key = "WO7uubCnre2mr25S30AwC5p0W9TKFd1Q4TPk2afi"
+    api_key = "" 
 
     headers = {
         "x-api-key": api_key,

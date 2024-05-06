@@ -3,7 +3,7 @@ import requests
 
 def upload_image(image_url):
     body = {
-        "key" : "6d207e02198a847aa98d0a2a901485a5",
+        "key" : "",
         "source": image_url,
         
     }

@@ -3,4 +3,7 @@ flask-react-app/Files
 flask-react-app/Examples
 flask-react-app/__pycache__
 __pycache__
+# env
 
+.env
+venv
