@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 Obtain Spotify API credentials by registering your application on the Spotify Developer Dashboard. Make sure to set the redirect URI to http://localhost:3000 or a custom URI if applicable.
 Create a .env file in the project root directory and add your Spotify API credentials, as well as your OpenAI key:
-
+```
 #.env
 
 #spotify credentials
@@ -31,7 +31,7 @@ CLIENT_SECRET=your_client_secret
 #OpenAI 
 
 OPENAI_API_KEY=your_key 
-
+```
 ## Usage
 Run the application:
 ```bash
