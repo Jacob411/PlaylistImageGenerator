@@ -10,9 +10,8 @@ Export: Generated art can be exported in various formats for sharing or further 
 
 ## Installation
 Clone this repository:
-bash
-Copy code
-git clone https://github.com/your_username/spotify-playlist-art-generator.git
+```bash
+git clone https://github.com/Jacob411/PlaylistImageGenerator
 Install dependencies:
 ```bash
 cd PlaylistImageGenerator
