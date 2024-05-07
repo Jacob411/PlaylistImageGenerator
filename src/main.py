@@ -39,6 +39,30 @@ def get_image_and_description(genres):
   )
   playlist_description = description_response.choices[0].message.content
 
+  art_styles_map = {
+    'pixel' : 'use a pixel art style',
+    'abstract' : 'use an abstract art style',
+    'minimalist' : 'use a minimalist art style',
+    'realistic' : 'use a realistic art style',
+    'surreal' : 'use a surreal art style',
+    'cartoon' : 'use a cartoon art style',
+    'anime' : 'use an anime art style',
+    'watercolor' : 'use a watercolor art style',
+    'oil painting' : 'use an oil painting art style',
+    'pop art' : 'use a pop art style',
+    'impressionist' : 'use an impressionist art style',
+    'expressionist' : 'use an expressionist art style',
+    'cubist' : 'use a cubist art style',
+    'futurist' : 'use a futurist art style',
+    
+  }
+  # prompt user to select an art style
+  style_num = input('Select an art style from the following list: \n1. Pixel\n2. Abstract\n3. Minimalist\n4. Realistic\n5. Surreal\n6. Cartoon\n7. Anime\n8. Watercolor\n9. Oil Painting\n10. Pop Art\n11. Impressionist\n12. Expressionist\n13. Cubist\n14. Futurist\n')
+  style_arr = ['pixel', 'abstract', 'minimalist', 'realistic', 'surreal', 'cartoon', 'anime', 'watercolor', 'oil painting', 'pop art', 'impressionist', 'expressionist', 'cubist', 'futurist']
+  selected_item = int(style_num) - 1
+
+
+
   print(f'description: {playlist_description}')
   # Get DALL-E prompt to construct texture for planet based on given genres
   prompt_response = client.chat.completions.create(
@@ -46,7 +70,7 @@ def get_image_and_description(genres):
     messages=[
       {
         'role': 'user',
-        'content': f'in one sentence, briefly describe cover art based on a playlist containing artists in the following genres: {genre_prompt_insert} try to not use the genre names.'
+        'content': f'in one sentence, briefly describe cover art based on a playlist containing artists in the following genres: {genre_prompt_insert} try to not use the genre names' + art_styles_map[style_arr[selected_item]]
       }
     ]
   )

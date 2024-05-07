@@ -13,6 +13,7 @@ def get_playlist_image():
 
     # get user input for playlist ID
     playlist_id = input("Enter the playlist ID: ")
+    print("\n")
     playlist_href = f"https://api.spotify.com/v1/playlists/{playlist_id}"
     playlist_info = get_endpoint(token, playlist_href)
     print(playlist_info['name'])
