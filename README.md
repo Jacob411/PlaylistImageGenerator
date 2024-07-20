@@ -1,11 +1,15 @@
 # Spotify Playlist Art Generator
+### Example cover for Punk Playlist '🚩🚩🚩' on Spotify:
+!["Punk Playlist"](src/Files/🚩🚩🚩.jpg "width=50px")
+
+
 ## Overview
 This project is a Spotify playlist art generator that creates visual representations based on the content of a Spotify playlist. It utilizes Spotify's API to retrieve information about the tracks in the playlist and then generates art based on various attributes such as song popularity, mood, genre, etc. The generated art can serve as a creative visualization of the playlist's characteristics.
 
 ## Features
-Playlist Analysis: The application analyzes the tracks within a given Spotify playlist, extracting relevant information on genres and artists.
-Art Generation: Based on the analyzed data, the application generates art in the form of visualizations, graphics, or other creative representations.
-Customization: Users can customize the art generation process by specifying parameters such as color scheme, visual style, or thematic elements.
+Playlist Analysis: The application analyzes the tracks within a given Spotify playlist, extracting relevant information on genres and artists.  
+Art Generation: Based on the analyzed data, the application generates art in the form of visualizations, graphics, or other creative representations.  
+Customization: Users can customize the art generation process by specifying parameters such as color scheme, visual style, or thematic elements.  
 Export: Generated art can be exported in various formats for sharing or further editing.
 
 ## Installation
