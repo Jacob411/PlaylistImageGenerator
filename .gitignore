@@ -1,0 +1,9 @@
+flask-react-app/venv
+src/Files
+flask-react-app/Examples
+src/__pycache__
+__pycache__
+# env
+
+.env
+venv
