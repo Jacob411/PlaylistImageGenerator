@@ -54,11 +54,12 @@ def get_image_and_description(genres):
     'expressionist' : 'use an expressionist art style',
     'cubist' : 'use a cubist art style',
     'futurist' : 'use a futurist art style',
+    'none' : ''
     
   }
   # prompt user to select an art style
-  style_num = input('Select an art style from the following list: \n1. Pixel\n2. Abstract\n3. Minimalist\n4. Realistic\n5. Surreal\n6. Cartoon\n7. Anime\n8. Watercolor\n9. Oil Painting\n10. Pop Art\n11. Impressionist\n12. Expressionist\n13. Cubist\n14. Futurist\n')
-  style_arr = ['pixel', 'abstract', 'minimalist', 'realistic', 'surreal', 'cartoon', 'anime', 'watercolor', 'oil painting', 'pop art', 'impressionist', 'expressionist', 'cubist', 'futurist']
+  style_num = input('Select an art style from the following list: \n1. Pixel\n2. Abstract\n3. Minimalist\n4. Realistic\n5. Surreal\n6. Cartoon\n7. Anime\n8. Watercolor\n9. Oil Painting\n10. Pop Art\n11. Impressionist\n12. Expressionist\n13. Cubist\n14. Futurist\nNone\n')
+  style_arr = ['pixel', 'abstract', 'minimalist', 'realistic', 'surreal', 'cartoon', 'anime', 'watercolor', 'oil painting', 'pop art', 'impressionist', 'expressionist', 'cubist', 'futurist', 'none']
   selected_item = int(style_num) - 1
 
 
